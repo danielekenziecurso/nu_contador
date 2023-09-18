@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import PageTransaction from "./page";
-import { GlobalStyles } from "./styles/GlogalStyles";
+import { GlobalStyles } from "./styles/globalStyles";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function App() {
@@ -10,6 +10,13 @@ function App() {
   const addListTransactions = (list) => {
     const newList = { ...list, id: uuidv4() };
     setListTransactions([...listTransactions, newList]);
+    if(list.type === "entrada"){
+      toast.success("Entrada de um valor!")
+    }
+    else if(list.type === "saida"){
+      toast.success("saida de um valor!")
+    }
+
   };
   const removeListTransactions = (listId) => {
     const newListTransactions = listTransactions.filter(
